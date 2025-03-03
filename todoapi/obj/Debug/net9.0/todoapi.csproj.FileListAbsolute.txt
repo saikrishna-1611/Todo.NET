@@ -242,3 +242,4 @@
 /Users/saikrishna/Desktop/Techdome/todo.net/todoapi/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/saikrishna/Desktop/Techdome/todo.net/todoapi/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/saikrishna/Desktop/Techdome/todo.net/todoapi/bin/Debug/net9.0/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll
+/Users/saikrishna/Desktop/Techdome/todo.net/todoapi/obj/Debug/net9.0/todoapi.sourcelink.json

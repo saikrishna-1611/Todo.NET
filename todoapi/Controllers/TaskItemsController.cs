@@ -38,13 +38,29 @@ namespace ToDoApi.Controllers
         }
 
         // POST: api/TaskItems
+        // [HttpPost]
+        // public async Task<ActionResult<TaskItem>> PostTaskItem(TaskItem taskItem)
+        // {
+        //     taskItem.Normalize();
+        //     _context.TaskItems.Add(taskItem);
+        //     await _context.SaveChangesAsync();
+        //     return CreatedAtAction(nameof(GetTaskItem), new { id = taskItem.Id }, taskItem);
+        // }
         [HttpPost]
-        public async Task<ActionResult<TaskItem>> PostTaskItem(TaskItem taskItem)
-        {
-            _context.TaskItems.Add(taskItem);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetTaskItem), new { id = taskItem.Id }, taskItem);
-        }
+public async Task<ActionResult<TaskItem>> PostTaskItem(TaskItem taskItem)
+{
+    var userExists = await _context.Users.AnyAsync(u => u.Id == taskItem.UserId);
+    if (!userExists)
+    {
+        return BadRequest("Invalid UserId.");
+    }
+
+    taskItem.Normalize();
+    _context.TaskItems.Add(taskItem);
+    await _context.SaveChangesAsync();
+    
+    return CreatedAtAction(nameof(GetTaskItem), new { id = taskItem.Id }, taskItem);
+}
 
         // PUT: api/TaskItems/5
         [HttpPut("{id}")]

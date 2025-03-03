@@ -7,7 +7,7 @@ namespace ToDoApi.Models
     {
         [Key] 
         public int Id { get; set; }
-        
+
         [Required]
         [MaxLength(100)]
         public required string Title { get; set; }  
@@ -17,8 +17,11 @@ namespace ToDoApi.Models
         [Required]
         public string Status { get; set; } = "Pending"; 
 
-        public DateTime DueDate { get; set; } = DateTime.UtcNow; 
-
+        public DateTime DueDate { get; set; }
+         public void Normalize()
+    {
+        DueDate = DateTime.SpecifyKind(DueDate, DateTimeKind.Utc);
+    }
         
         [ForeignKey("User")]
         public int UserId { get; set; }
